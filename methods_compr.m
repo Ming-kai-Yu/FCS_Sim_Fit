@@ -6,19 +6,24 @@
 % ----------------------------------------
 % T_i, i = 1, 2, ..., nT
 init_status = 0;
+nT = 10;
+
 if init_status == 1
-bias_table = zeros(7, 5);
-error_table = zeros(7, 5);
-bias_errorbar = zeros(7, 5);
-error_lbar = zeros(7, 5);
-error_ubar = zeros(7, 5);
+bias_table = zeros(nT, 5);
+error_table = zeros(nT, 5);
+bias_errorbar = zeros(nT, 5);
+error_lbar = zeros(nT, 5);
+error_ubar = zeros(nT, 5);
+T_dat = zeros(nT, 1);
 end
 %%
-i = 7;
-T_dat(i) = 0.01; 
+i = 1;
+T_dat(i) = 10; 
 D_true = 1.3e-10;
 
-error = g_G_Corr_Corr3_Corr2n3_N2Tp01 - D_true;
+error = g_G_Corr_Corr3_Corr2n3_N2T10 - D_true;
+
+
 bias = mean(error);
 e_std = std(error);
 e_bar_std = e_std/sqrt(ns);
@@ -39,7 +44,10 @@ bias_errorbar(i,:) = e_bar_std;
 error_lbar(i,:) = l2 - error_lower;
 error_ubar(i,:) = error_upper - l2;
 
-%%
+%% Plot loglog error against T
+done = 1;
+if done == 1
+    
 rel_bias_table = bias_table/D*100;
 rel_error_table = error_table/D*100;
 rel_error_lbar = error_lbar/D*100;
@@ -54,7 +62,7 @@ hold on
 errorbar(T_dat, rel_error_table(:,2), rel_error_lbar(:,2), rel_error_ubar(:,2), '-*')
 errorbar(T_dat, rel_error_table(:,3), rel_error_lbar(:,3), rel_error_ubar(:,3), '-x')
 errorbar(T_dat, rel_error_table(:,4), rel_error_lbar(:,4), rel_error_ubar(:,4), '-+')
-%errorbar(T_dat, rel_error_table(:,5), rel_error_lbar(:,5), rel_error_ubar(:,5))
+errorbar(T_dat, rel_error_table(:,5), rel_error_lbar(:,5), rel_error_ubar(:,5), '-s')
 xlabel('T')
 ylabel('relative L2 error, percent')
 legend('g', 'G', 'Corr', 'Corr3', 'Corr2n3')
@@ -71,21 +79,21 @@ hold on
 loglog(T_dat, rel_bias_table(:,2), '-*')
 loglog(T_dat, rel_bias_table(:,3), '-x')
 loglog(T_dat, rel_bias_table(:,4), '-+')
-loglog(T_dat, rel_bias_table(:,5))
+loglog(T_dat, rel_bias_table(:,5), '-s')
 xlabel('T')
 ylabel('relative bias, percent')
 legend('g', 'G', 'Corr', 'Corr3', 'Corr2n3')
 grid on
 saveas(gcf, 'rel_bias_loglog_1.png')
 
+%%
 figure
 errorbar(T_dat, rel_bias_table(:,1), rel_bias_errorbar(:,1), '-o')
 hold on
 errorbar(T_dat, rel_bias_table(:,2), rel_bias_errorbar(:,2), '-*')
 errorbar(T_dat, rel_bias_table(:,3), rel_bias_errorbar(:,3),'-x')
 errorbar(T_dat, rel_bias_table(:,4), rel_bias_errorbar(:,4),'-+')
-%errorbar(T_dat, rel_error_table(:,5), rel_error_lbar(:,5), rel_error_ubar(:,5))
-xlabel('T')
+errorbar(T_dat, rel_bias_table(:,5), rel_bias_errorbar(:,5), '-s')
 ylabel('relative bias, percent')
 legend('g', 'G', 'Corr', 'Corr3', 'Corr2n3')
 set(gca,'xscale','log', 'yscale', 'log')
@@ -101,9 +109,10 @@ hold on
 loglog(T_dat, rel_error_table(:,2), '-*')
 loglog(T_dat, rel_error_table(:,3), '-x')
 loglog(T_dat, rel_error_table(:,4), '-+')
-loglog(T_dat, rel_error_table(:,5))
+loglog(T_dat, rel_error_table(:,5), '-s')
 xlabel('T')
 ylabel('relative L2 error, percent')
 legend('g', 'G', 'Corr', 'Corr3', 'Corr2n3')
 grid on
 saveas(gcf, 'rel_error_loglog_1.png')
+end

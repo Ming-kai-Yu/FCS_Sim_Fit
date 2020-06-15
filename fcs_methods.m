@@ -81,8 +81,8 @@ D_fit_G = params_fit(:,2)/k;
 
 fprintf('T = %g.\n', nt*dt);
 fprintf('True parameters: Neff %g, D %g.\n', params_true(1), params_true(2));
-fprintf('The mean of the error for fitted D is %g.\n', mean(D_fit_G)-D_true);
-fprintf('The relative error is %g percent.\n', (mean(D_fit_G)-D_true)/D_true*100);
+fprintf('The mean of the bias for fitted D is %g.\n', mean(D_fit_G)-D_true);
+fprintf('The relative bias is %g percent.\n', (mean(D_fit_G)-D_true)/D_true*100);
 fprintf('The std of the fitted D is %g.\n', std(D_fit_G));
 fprintf('The relative L2 error is %g percent.\n', ...
     sqrt((mean(D_fit_G)-D_true)^2 + std(D_fit_G)^2)/D_true*100);
@@ -109,8 +109,8 @@ D_fit_Corr = params_fit_Corr(:,2)/k;
 
 fprintf('T = %g.\n', nt*dt);
 fprintf('True parameters: Neff %g, D %g.\n', params_true(1), params_true(2));
-fprintf('The mean of the error for fitted D is %g.\n', mean(D_fit_Corr)-D_true);
-fprintf('The relative error is %g percent.\n', (mean(D_fit_Corr)-D_true)/D_true*100);
+fprintf('The mean of the bias for fitted D is %g.\n', mean(D_fit_Corr)-D_true);
+fprintf('The relative bias is %g percent.\n', (mean(D_fit_Corr)-D_true)/D_true*100);
 fprintf('The std of the fitted D is %g.\n', std(D_fit_Corr));
 fprintf('The relative L2 error is %g percent.\n', ...
     sqrt((mean(D_fit_Corr)-D_true)^2 + std(D_fit_Corr)^2)/D_true*100);
@@ -137,8 +137,8 @@ D_fit_Corr3 = params_fit(:,2)/k;
 
 fprintf('T = %g.\n', nt*dt);
 fprintf('True parameters: Neff %g, D %g.\n', params_true(1), params_true(2));
-fprintf('The mean of the error for fitted D is %g.\n', mean(D_fit_Corr3)-D_true);
-fprintf('The relative error is %g percent.\n', (mean(D_fit_Corr3)-D_true)/D_true*100);
+fprintf('The mean of the bias for fitted D is %g.\n', mean(D_fit_Corr3)-D_true);
+fprintf('The relative bias is %g percent.\n', (mean(D_fit_Corr3)-D_true)/D_true*100);
 fprintf('The std of the fitted D is %g.\n', std(D_fit_Corr3));
 fprintf('The relative L2 error is %g percent.\n', ...
     sqrt((mean(D_fit_Corr3)-D_true)^2 + std(D_fit_Corr3)^2)/D_true*100);
@@ -164,8 +164,8 @@ D_fit_g2 = params_fit/k;
 
 fprintf('T = %g.\n', nt*dt);
 fprintf('True parameters: Neff %g, D %g.\n', params_true(1), params_true(2));
-fprintf('The mean of the error for fitted D is %g.\n', mean(D_fit_g2)-D_true);
-fprintf('The relative error is %g percent.\n', (mean(D_fit_g2)-D_true)/D_true*100);
+fprintf('The mean of the bias for fitted D is %g.\n', mean(D_fit_g2)-D_true);
+fprintf('The relative bias is %g percent.\n', (mean(D_fit_g2)-D_true)/D_true*100);
 fprintf('The std of the fitted D is %g.\n', std(D_fit_g2));
 fprintf('The relative L2 error is %g percent.\n', ...
     sqrt((mean(D_fit_g2)-D_true)^2 + std(D_fit_g2)^2)/D_true*100);
@@ -195,8 +195,8 @@ if corr_2n3_status == 1
 
 fprintf('T = %g.\n', nt*dt);
 fprintf('True parameters: Neff %g, D %g.\n', params_true(1), params_true(2));
-fprintf('The mean of the error for fitted D is %g.\n', mean(D_fit_Corr_2n3)-D_true);
-fprintf('The relative error is %g percent.\n', (mean(D_fit_Corr_2n3)-D_true)/D_true*100);
+fprintf('The mean of the bias for fitted D is %g.\n', mean(D_fit_Corr_2n3)-D_true);
+fprintf('The relative bias is %g percent.\n', (mean(D_fit_Corr_2n3)-D_true)/D_true*100);
 fprintf('The std of the fitted D is %g.\n', std(D_fit_Corr_2n3));
 fprintf('The relative L2 error is %g percent.\n', ...
     sqrt((mean(D_fit_Corr_2n3)-D_true)^2 + std(D_fit_Corr_2n3)^2)/D_true*100);
@@ -239,7 +239,7 @@ end
 toc
 %% save the results
 % 
-g_G_Corr_Corr3_Corr2n3_N2Tp10 = [D_fit_g2, D_fit_G, D_fit_Corr, D_fit_Corr3,...
+g_G_Corr_Corr3_Corr2n3_N2T10 = [D_fit_g2, D_fit_G, D_fit_Corr, D_fit_Corr3,...
     D_fit_Corr_2n3];
-%save('D_fit.mat', 'g_G_Corr_Corr3_Corr2n3_N2T1')
-%save('D_fit.mat', 'g_G_Corr_Corr3_Corr2n3_N2Tp01', '-append')
+%save('D_fit_50.mat', 'g_G_Corr_Corr3_Corr2n3_N2T10')
+save('D_fit_50.mat', 'g_G_Corr_Corr3_Corr2n3_N2T10', '-append')
