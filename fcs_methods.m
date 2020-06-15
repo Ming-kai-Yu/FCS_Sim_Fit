@@ -239,7 +239,7 @@ end
 toc
 %% save the results
 % 
-g_G_Corr_Corr3_Corr2n3_N2Tp01 = [D_fit_g2, D_fit_G, D_fit_Corr, D_fit_Corr3,...
+g_G_Corr_Corr3_Corr2n3_N2Tp10 = [D_fit_g2, D_fit_G, D_fit_Corr, D_fit_Corr3,...
     D_fit_Corr_2n3];
 %save('D_fit.mat', 'g_G_Corr_Corr3_Corr2n3_N2T1')
-save('D_fit.mat', 'g_G_Corr_Corr3_Corr2n3_N2Tp01', '-append')
+%save('D_fit.mat', 'g_G_Corr_Corr3_Corr2n3_N2Tp01', '-append')

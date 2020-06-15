@@ -7,13 +7,13 @@
 
 %% fcs efficient simulation driver
 
-ns = 100;
+ns = 50;
 fprintf("-Number of simulations: %d\n", ns);
 
 dt = 1e-06;
 fprintf("Time step dt: %g\n", dt);
 
-T = 1;
+T = 10;
 fprintf("T: %g\n", T);
 taumax = 2e-04;
 ntau = floor(taumax/dt);
@@ -57,6 +57,9 @@ m = 20;
 vol_E = pi*a*a*c*4/3;
 ratio = vol_E/vol_sol;
 
+t_dat = (1:ntime)*dt;
+%%
+
 fprintf('--------------------efficient simulation---------------\n')
 tic
 for j = 1:ns
@@ -67,9 +70,8 @@ for j = 1:ns
 end
 toc
 
-t_dat = (1:ntime)*dt;
 
-fileID = fopen('intensity.bin','w');
+fileID = fopen('intensity_T10.bin','a');
 fwrite(fileID,intensity_eff,'double');
 fclose(fileID);
 
