@@ -120,13 +120,13 @@ errorbar(T_dat, rel_error_table(:,2), rel_error_lbar(:,2), rel_error_ubar(:,2), 
 errorbar(T_dat, rel_error_table(:,3), rel_error_lbar(:,3), rel_error_ubar(:,3), '-x')
 errorbar(T_dat, rel_error_table(:,4), rel_error_lbar(:,4), rel_error_ubar(:,4), '-+')
 errorbar(T_dat, rel_error_table(:,5), rel_error_lbar(:,5), rel_error_ubar(:,5), '-s')
-title('relative L2 error, ns = 200')
+title(['relative L2 error, ns = ' num2str(ns)])
 xlabel('T')
 ylabel('relative L2 error, percent')
 legend('g', 'G', 'Corr', 'Corr3', 'Corr2n3')
 set(gca,'xscale','log', 'yscale', 'log')
 grid on
-saveas(gcf, 'rel_err_loglog_errorbar_2.png')
+saveas(gcf, 'rel_err_loglog_errorbar_1000.png')
 
 figure
 errorbar(T_dat, rel_bias_table(:,1), rel_bias_errorbar(:,1), '-o')
@@ -135,11 +135,11 @@ errorbar(T_dat, rel_bias_table(:,2), rel_bias_errorbar(:,2), '-*')
 errorbar(T_dat, rel_bias_table(:,3), rel_bias_errorbar(:,3),'-x')
 errorbar(T_dat, rel_bias_table(:,4), rel_bias_errorbar(:,4),'-+')
 errorbar(T_dat, rel_bias_table(:,5), rel_bias_errorbar(:,5), '-s')
-title('relative bias, ns = 200')
+title(['relative bias, ns = ' num2str(ns)])
 xlabel('T')
 ylabel('relative bias, percent')
 legend('g', 'G', 'Corr', 'Corr3', 'Corr2n3')
 set(gca,'xscale','log', 'yscale', 'log')
 grid on
-saveas(gcf, 'rel_bias_loglog_errorbar_2.png')
+saveas(gcf, 'rel_bias_loglog_errorbar_1000.png')
 
